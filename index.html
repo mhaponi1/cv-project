@@ -61,19 +61,13 @@
             <article>
                 <h3>Tworca i Developer modu PvP - Minecraft</h3>
                 <p>luty 2025 - obecnie</p>
-                <p>
-                    Zaprojektowalem i stworzylem mod PvP do Minecraft w Java.
-                    Codziennie z modu korzysta ponad 4 000 graczy, rekord 5 000.
-                </p>
+                <p>Zaprojektowalem i stworzylem mod PvP do Minecraft w Java. Codziennie z modu korzysta ponad 4 000 graczy, rekord 5 000.</p>
             </article>
 
             <article>
                 <h3>Wspolzalozyciel i Developer serwera Minecraft</h3>
                 <p>maj 2022 - lipiec 2025</p>
-                <p>
-                    Wspolnie z youtuberem zalozylem i rozwijalem serwer Minecraft.
-                    Rekord onlajnu — 450 graczy.
-                </p>
+                <p>Wspolnie z youtuberem zalozylem i rozwijalem serwer Minecraft. Rekord onlajnu — 450 graczy.</p>
             </article>
 
             <article>
@@ -99,11 +93,40 @@
                 <li>Serwer Minecraft - publiczny serwer, rekord 450 graczy</li>
             </ul>
         </section>
+
+        <section>
+            <h2>Kontakt - formularz</h2>
+            <form id="contact-form" onsubmit="return validateForm()">
+                <div>
+                    <label for="imie">Imię *</label>
+                    <input type="text" id="imie" name="imie">
+                    <div class="error-msg" id="imie-error"></div>
+                </div>
+                <div>
+                    <label for="nazwisko">Nazwisko *</label>
+                    <input type="text" id="nazwisko" name="nazwisko">
+                    <div class="error-msg" id="nazwisko-error"></div>
+                </div>
+                <div>
+                    <label for="email">E-mail *</label>
+                    <input type="text" id="email" name="email">
+                    <div class="error-msg" id="email-error"></div>
+                </div>
+                <div>
+                    <label for="wiadomosc">Wiadomość *</label>
+                    <textarea id="wiadomosc" name="wiadomosc" rows="5"></textarea>
+                    <div class="error-msg" id="wiadomosc-error"></div>
+                </div>
+                <button type="submit">Wyślij</button>
+                <div class="success-msg" id="success-msg"></div>
+            </form>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2026 Mykola Haponiuk | Nr indeksu: 77550</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
