@@ -26,6 +26,27 @@ function toggleSection() {
     }
 }
 
+// Pobieranie danych z JSON i generowanie list
+fetch('data.json')
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        var umiejetnosciList = document.getElementById('umiejetnosci-list');
+        for (var i = 0; i < data.umiejetnosci.length; i++) {
+            var li = document.createElement('li');
+            li.textContent = data.umiejetnosci[i];
+            umiejetnosciList.appendChild(li);
+        }
+
+        var projektyList = document.getElementById('projekty-list');
+        for (var i = 0; i < data.projekty.length; i++) {
+            var li = document.createElement('li');
+            li.textContent = data.projekty[i];
+            projektyList.appendChild(li);
+        }
+    });
+
 // Walidacja formularza
 function validateForm() {
     var imie = document.getElementById('imie');
