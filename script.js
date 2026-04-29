@@ -47,6 +47,46 @@ fetch('data.json')
         }
     });
 
+// Notatki - localStorage
+function loadNotatki() {
+    var notatki = JSON.parse(localStorage.getItem('notatki') || '[]');
+    var list = document.getElementById('notatki-list');
+    list.innerHTML = '';
+    for (var i = 0; i < notatki.length; i++) {
+        var li = document.createElement('li');
+        li.textContent = notatki[i];
+        var btn = document.createElement('button');
+        btn.textContent = 'Usuń';
+        btn.onclick = (function(index) {
+            return function() { removeNotatka(index); };
+        })(i);
+        li.appendChild(btn);
+        list.appendChild(li);
+    }
+}
+
+function addNotatka() {
+    var input = document.getElementById('notatka-input');
+    var text = input.value.trim();
+    if (text === '') return;
+
+    var notatki = JSON.parse(localStorage.getItem('notatki') || '[]');
+    notatki.push(text);
+    localStorage.setItem('notatki', JSON.stringify(notatki));
+    input.value = '';
+    loadNotatki();
+}
+
+function removeNotatka(index) {
+    var notatki = JSON.parse(localStorage.getItem('notatki') || '[]');
+    notatki.splice(index, 1);
+    localStorage.setItem('notatki', JSON.stringify(notatki));
+    loadNotatki();
+}
+
+// Wczytanie notatek przy starcie strony
+loadNotatki();
+
 // Walidacja formularza
 function validateForm() {
     var imie = document.getElementById('imie');

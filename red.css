@@ -131,6 +131,44 @@ form button:hover {
     margin-top: 10px;
 }
 
+.notatki-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.notatki-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+#notatki-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+#notatki-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    background-color: #fef5f5;
+    border-left: 4px solid #c0392b;
+}
+
+#notatki-list button {
+    padding: 4px 10px;
+    background-color: #c0392b;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
 footer {
     background-color: #8b0000;
     color: #f5c6c6;
