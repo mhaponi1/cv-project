@@ -87,7 +87,7 @@ function removeNotatka(index) {
 // Wczytanie notatek przy starcie strony
 loadNotatki();
 
-// Walidacja formularza
+// Walidacja formularza + wysyłka POST do backendu (Web3Forms)
 function validateForm() {
     var imie = document.getElementById('imie');
     var nazwisko = document.getElementById('nazwisko');
@@ -156,8 +156,36 @@ function validateForm() {
     }
 
     if (valid) {
-        successMsg.textContent = 'Formularz został wysłany pomyślnie!';
-        document.getElementById('contact-form').reset();
+        // Wysylka POST do backendu (Web3Forms)
+        var formData = {
+            access_key: '4d48778e-c7dd-4dae-9245-231c50ad566e',
+            imie: imie.value,
+            nazwisko: nazwisko.value,
+            email: email.value,
+            wiadomosc: wiadomosc.value
+        };
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
+                    successMsg.textContent = 'Formularz został wysłany pomyślnie!';
+                    document.getElementById('contact-form').reset();
+                } else {
+                    successMsg.textContent = 'Błąd: ' + data.message;
+                }
+            })
+            .catch(function(error) {
+                successMsg.textContent = 'Błąd wysyłki: ' + error.message;
+            });
     }
 
     return false;
